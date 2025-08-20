@@ -13,11 +13,11 @@ import { LinkPreset } from "./types/config";
 import { getTranslateLanguageFromConfig } from "./utils/language-utils";
 
 // Define site language
-const SITE_LANG = "en"; // Language code, e.g., 'en', 'zh_CN', 'ja', etc.
+const SITE_LANG = "zh_CN"; // Language code, e.g., 'en', 'zh_CN', 'ja', etc.
 
 export const siteConfig: SiteConfig = {
-	title: "Mizuki",
-	subtitle: "One demo website",
+	title: "Yozakura Misaka",
+	subtitle: "宅日记",
 
 	lang: SITE_LANG,
 
@@ -69,13 +69,13 @@ export const siteConfig: SiteConfig = {
 
 		homeText: {
 			enable: true, // Display custom text on homepage
-			title: "Mizuki", // Homepage banner main title
+			title: "Yozakura Misaka", // Homepage banner main title
 
 			subtitle: [
-				"One demo website",
-				"Carousel Text1",
-				"Carousel Text2",
-				"Carousel Text3",
+				"永远相信美好的事情即将发生",
+				"将日常编织为奇迹，将奇迹解构为日常",
+				"海纳百川，有容乃大",
+				"落霞与孤鹜齐飞，秋水共长天一色",
 			], // Homepage banner subtitle, supports multiple texts
 			typewriter: {
 				enable: true, // Enable subtitle typewriter effect
@@ -117,7 +117,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Diary,
 		{
 			name: "GitHub",
-			url: "https://github.com/matsuzaka-yuki", // Internal links should not include base path as it will be automatically added
+			url: "https://github.com/Mineocean", // Internal links should not include base path as it will be automatically added
 
 			external: true, // Show external link icon and open in new tab
 		},
@@ -126,23 +126,18 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "assets/images/avatar.jpg", // Relative to /src directory. If starts with '/', relative to /public directory
-	name: "Mizuki",
-	bio: "This is a description",
+	name: "Yozakura Misaka",
+	bio: "一个沉迷于二次元的宅",
 	links: [
 		{
 			name: "Bilibli",
 			icon: "fa6-brands:bilibili",
-			url: "https://space.bilibili.com/701864046",
-		},
-		{
-			name: "Gitee",
-			icon: "mdi:git",
-			url: "https://gitee.com/matsuzakayuki",
+			url: "https://space.bilibili.com/445578281",
 		},
 		{
 			name: "GitHub",
 			icon: "fa6-brands:github",
-			url: "https://github.com/matsuzaka-yuki",
+			url: "https://github.com/Mineocean",
 		},
 	],
 };
@@ -167,8 +162,8 @@ export const commentConfig: CommentConfig = {
 };
 
 export const announcementConfig: AnnouncementConfig = {
-	title: "Announcement", // Announcement title
-	content: "Welcome to my blog! This is a sample announcement.", // Announcement content
+	title: "什亭之匣小白板", // Announcement title
+	content: "欢迎回来，老师！", // Announcement content
 	closable: true, // Allow users to close the announcement
 	link: {
 		enable: true, // Enable link
@@ -179,7 +174,7 @@ export const announcementConfig: AnnouncementConfig = {
 };
 
 export const musicPlayerConfig: MusicPlayerConfig = {
-	enable: true, // Enable music player feature
+	enable: false, // Enable music player feature
 };
 
 /**
@@ -288,7 +283,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 		//hidden:不显示侧边栏 sidebar:显示侧边栏
 		layout: {
 			// 移动端：隐藏侧边栏
-			mobile: "sidebar",
+			mobile: "hidden",
 			// 平板端：显示侧边栏
 			tablet: "sidebar",
 			// 桌面端：显示侧边栏
