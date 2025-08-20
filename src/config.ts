@@ -64,7 +64,7 @@ export const siteConfig: SiteConfig = {
 		carousel: {
 			enable: true, // When true: enable carousel for multiple images. When false: randomly display one image from the array
 
-			interval: 1, // Carousel interval time (seconds)
+			interval: 60, // Carousel interval time (seconds)
 		},
 
 		homeText: {
