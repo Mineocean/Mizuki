@@ -216,8 +216,6 @@ export const navBarConfig: NavBarConfig = {
 			icon: "material-symbols:info",
 			children: [LinkPreset.About, LinkPreset.Friends],
 		},
-			],
-		},
 	],
 };
 
