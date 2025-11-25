@@ -41,7 +41,7 @@ export const siteConfig: SiteConfig = {
 		friends: false, // 友链页面开关
 		projects: false, // 项目页面开关
 		skills: false, // 技能页面开关
-		timeline: true, // 时间线页面开关
+		timeline: false, // 时间线页面开关
 		albums: false, // 相册页面开关
 		devices: false, // 设备页面开关
 	},
@@ -264,12 +264,6 @@ export const navBarConfig: NavBarConfig = {
 					url: "/anime/",
 					icon: "material-symbols:movie",
 				},
-				{
-					name: "Devices",
-					url: "devices/",
-					icon: "material-symbols:devices",
-					external: false,
-				},
 			],
 		},
 		{
@@ -281,18 +275,6 @@ export const navBarConfig: NavBarConfig = {
 					name: "About",
 					url: "/about/",
 					icon: "material-symbols:person",
-				},
-			],
-		},
-		{
-			name: "Others",
-			url: "#",
-			icon: "material-symbols:more-horiz",
-			children: [
-				{
-					name: "Timeline",
-					url: "/timeline/",
-					icon: "material-symbols:timeline",
 				},
 			],
 		},
