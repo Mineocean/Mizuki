@@ -7,6 +7,7 @@ import type {
 	LicenseConfig,
 	MusicPlayerConfig,
 	NavBarConfig,
+	PermalinkConfig,
 	ProfileConfig,
 	SakuraConfig,
 	SidebarLayoutConfig,
@@ -36,7 +37,7 @@ export const siteConfig: SiteConfig = {
 
 	// 特色页面开关配置(关闭不在使用的页面有助于提升SEO,关闭后直接在顶部导航删除对应的页面就行)
 	featurePages: {
-		anime: true, // 番剧页面开关
+        anime: true, // 番剧页面开关
 		diary: true, // 日记页面开关
 		friends: false, // 友链页面开关
 		projects: false, // 项目页面开关
@@ -49,7 +50,7 @@ export const siteConfig: SiteConfig = {
 	// 顶栏标题配置
 	navbarTitle: {
 		// 顶栏标题文本
-		text: "宅日记",
+		text: "Yozakura Misaka-宅日记",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.png
 		icon: "assets/home/home.png",
 	},
@@ -74,7 +75,7 @@ export const siteConfig: SiteConfig = {
 	// 标签样式配置
 	tagStyle: {
 		// 是否使用新样式（悬停高亮样式）还是旧样式（外框常亮样式）
-		useNewStyle: true,
+		useNewStyle: false,
 	},
 
 	// 壁纸模式配置
@@ -120,7 +121,7 @@ export const siteConfig: SiteConfig = {
 
 		waves: {
 			enable: false, // 是否启用水波纹效果(这个功能比较吃性能)
-			performanceMode: true, // 性能模式：减少动画复杂度(性能提升40%)
+			performanceMode: false, // 性能模式：减少动画复杂度(性能提升40%)
 			mobileDisable: false, // 移动端禁用
 		},
 
@@ -166,9 +167,11 @@ export const siteConfig: SiteConfig = {
 	},
 	toc: {
 		enable: true, // 启用目录功能
+		mode: "sidebar", // 目录显示模式："float" 悬浮按钮模式，"sidebar" 侧边栏模式
 		depth: 2, // 目录深度，1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推
-		useJapaneseBadge: false, // 使用日语假名标记（あいうえお...）代替数字，开启后会将 1、2、3... 改为 あ、い、う...
+		useJapaneseBadge: true, // 使用日语假名标记（あいうえお...）代替数字，开启后会将 1、2、3... 改为 あ、い、う...
 	},
+	showCoverInContent: true, // 在文章内容页显示文章封面
 	generateOgImages: false, // 启用生成OpenGraph图片功能,注意开启后要渲染很长时间，不建议本地调试的时候开启
 	favicon: [
 		// 留空以使用默认 favicon
@@ -236,7 +239,7 @@ export const navBarConfig: NavBarConfig = {
 		LinkPreset.Archive,
 		// 支持自定义导航栏链接,并且支持多级菜单,3.1版本新加
 		{
-			name: "Links",
+		name: "Links",
 			url: "/links/",
 			icon: "material-symbols:link",
 			children: [
@@ -282,7 +285,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/avatar.jpg", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
+	avatar: "assets/images/avatar.webp", // 相对于 /src 目录。如果以 '/' 开头，则相对于 /public 目录
 	name: "Misaka Yozakura",
 	bio: "创造奇迹，改变世界",
 	typewriter: {
@@ -307,6 +310,32 @@ export const licenseConfig: LicenseConfig = {
 	enable: true,
 	name: "CC BY-NC-SA 4.0",
 	url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+};
+
+// Permalink 固定链接配置
+export const permalinkConfig: PermalinkConfig = {
+	enable: false, // 是否启用全局 permalink 功能，关闭时使用默认的文件名作为链接
+	/**
+	 * permalink 格式模板
+	 * 支持的占位符：
+	 * - %year% : 4位年份 (2024)
+	 * - %monthnum% : 2位月份 (01-12)
+	 * - %day% : 2位日期 (01-31)
+	 * - %hour% : 2位小时 (00-23)
+	 * - %minute% : 2位分钟 (00-59)
+	 * - %second% : 2位秒数 (00-59)
+	 * - %post_id% : 文章序号（按发布时间升序排列，最早的文章为1）
+	 * - %postname% : 文章文件名（slug）
+	 * - %category% : 分类名（无分类时为 "uncategorized"）
+	 *
+	 * 示例：
+	 * - "%year%-%monthnum%-%postname%" => "/2024-12-my-post/"
+	 * - "%post_id%-%postname%" => "/42-my-post/"
+	 * - "%category%-%postname%" => "/tech-my-post/"
+	 *
+	 * 注意：不支持斜杠 "/"，所有生成的链接都在根目录下
+	 */
+	format: "%postname%", // 默认使用文件名
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {
