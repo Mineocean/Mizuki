@@ -41,13 +41,6 @@ const logoSrc = rawLogo?.match(/^(http|https|\/\/)/) ? rawLogo : rawLogo ? url(r
 
 const rawIcon = siteConfig.navbarTitle?.icon;
 const iconSrc = rawIcon?.match(/^(http|https|\/\/)/) ? rawIcon : rawIcon ? url(rawIcon) : "";
-
-const isLogoExternal = rawLogo?.match(/^(http|https|\/\/)/);
-const isIconExternal = rawIcon?.match(/^(http|https|\/\/)/);
-// 仅对 .webp 文件自身使用 <picture> 标签做格式fallback
-// .png 路径不假设存在同名 .webp，避免 404 导致空白
-const logoWebpSrc = rawLogo?.endsWith(".webp") && !isLogoExternal ? logoSrc : "";
-const iconWebpSrc = rawIcon?.endsWith(".webp") && !isIconExternal ? iconSrc : "";
 ---
 <div id="navbar" class="z-50 onload-animation group" data-transparent-mode={navbarTransparentMode} data-is-home={isHomePage}>
     <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation -->
@@ -57,24 +50,10 @@ const iconWebpSrc = rawIcon?.endsWith(".webp") && !isIconExternal ? iconSrc : ""
 				{/* 使用navbarTitle配置或默认配置 */}
                 {siteConfig.navbarTitle ? (
                     siteConfig.navbarTitle.mode === "logo" ? (
-                        logoWebpSrc ? (
-                            <picture>
-                                <source srcset={logoWebpSrc} type="image/webp" />
-                                <img src={logoSrc} alt={siteConfig.navbarTitle.text} class="h-[2.5rem] md:h-[3.25rem] md:[.enable-banner_&]:h-[2.5rem] md:[.enable-banner_&]:group-[.scrolled]:h-[3.25rem] max-w-full object-contain transition-all duration-300" loading="lazy" />
-                            </picture>
-                        ) : (
-                            <img src={logoSrc} alt={siteConfig.navbarTitle.text} class="h-[2.5rem] md:h-[3.25rem] md:[.enable-banner_&]:h-[2.5rem] md:[.enable-banner_&]:group-[.scrolled]:h-[3.25rem] max-w-full object-contain transition-all duration-300" loading="lazy" />
-                        )
+                        <img src={logoSrc} alt={siteConfig.navbarTitle.text} class="h-[2.5rem] md:h-[3.25rem] md:[.enable-banner_&]:h-[2.5rem] md:[.enable-banner_&]:group-[.scrolled]:h-[3.25rem] max-w-full object-contain transition-all duration-300" loading="lazy" />
                     ) : (
                         <>
-                            {iconWebpSrc ? (
-                                <picture>
-                                    <source srcset={iconWebpSrc} type="image/webp" />
-                                    <img src={iconSrc} alt="" class="h-[1.75rem] w-[1.75rem] mr-2 object-contain" loading="lazy" />
-                                </picture>
-                            ) : (
-                                <img src={iconSrc} alt="" class="h-[1.75rem] w-[1.75rem] mr-2 object-contain" loading="lazy" />
-                            )}
+                            <img src={iconSrc} alt="" class="h-[1.75rem] w-[1.75rem] mr-2 object-contain" loading="lazy" />
                             <span class="dark:text-white text-black">{siteConfig.navbarTitle.text}</span>
                         </>
                     )
