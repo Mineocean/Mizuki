@@ -1,7 +1,7 @@
 {
 	"buildCommand": "pnpm build",
 	"outputDirectory": "dist",
-	"installCommand": "pnpm install",
+	"installCommand": "(python3 -m pip install setuptools || true) && pnpm install",
 	"framework": "astro",
 	"headers": [
 		{
