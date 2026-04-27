@@ -1,7 +1,19 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import Fontmin from "fontmin";
+
+// fontmin 依赖 ttf2woff2，后者需要 node-gyp 编译原生模块。
+// Node.js 24 + Python 3.12+ 环境下 distutils 已移除会导致编译失败。
+// 字体压缩非构建关键步骤，失败时跳过不影响部署。
+let Fontmin;
+try {
+	const fontminModule = await import("fontmin");
+	Fontmin = fontminModule.default || fontminModule;
+} catch {
+	console.log("⚠ fontmin 无法加载（ttf2woff2 编译失败），跳过字体压缩");
+	console.log("   Vercel 部署可用 Node.js 22 解决，参见 docs/DEPLOYMENT.md");
+	process.exit(0);
+}
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
