@@ -428,7 +428,7 @@ export const announcementConfig: AnnouncementConfig = {
 
 export const musicPlayerConfig: MusicPlayerConfig = {
 	enable: false, // 启用音乐播放器功能
-	showFloatingPlayer: true, // 显示悬浮播放器 UI
+	showFloatingPlayer: false, // 显示悬浮播放器 UI
 	floatingEntryMode: "fab", // 悬浮入口模式："default" 为独立悬浮播放器，"fab" 为集成到通用 FAB 组
 	mode: "meting", // 音乐播放器模式，可选 "local" 或 "meting"
 	meting_api:
@@ -633,13 +633,13 @@ export const pioConfig: import("./types/config").PioConfig = {
 
 // 相关文章配置
 export const relatedPostsConfig: RelatedPostsConfig = {
-	enable: true,
+	enable: false,
 	maxCount: 5,
 };
 
 // 随机文章配置
 export const randomPostsConfig: RandomPostsConfig = {
-	enable: true,
+	enable: false,
 	maxCount: 5,
 };
 
