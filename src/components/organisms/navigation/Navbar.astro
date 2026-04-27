@@ -54,7 +54,7 @@ const iconSrc = rawIcon?.match(/^(http|https|\/\/)/) ? rawIcon : rawIcon ? url(r
                     ) : (
                         <>
                             <img src={iconSrc} alt="" class="h-[1.75rem] w-[1.75rem] mr-2 object-contain shrink-0" loading="lazy" />
-                            <span class="dark:text-white text-black truncate max-w-32 sm:max-w-none">{siteConfig.navbarTitle.text}</span>
+                            <span class="dark:text-white text-black hidden sm:inline">{siteConfig.navbarTitle.text}</span>
                         </>
                     )
                 ) : (
