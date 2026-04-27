@@ -57,9 +57,9 @@ export const siteConfig: SiteConfig = {
 		// 顶栏标题文本
 		text: "Yozakura Misaka-宅日记",
 		// 顶栏标题图标路径，默认使用 public/assets/home/home.webp
-		icon: "assets/home/logo.png",
+		icon: "assets/home/logo.webp",
 		// 网站Logo图片路径
-		logo: "assets/home/logo.png",
+		logo: "assets/home/logo.webp",
 	},
 
 	// 页面自动缩放配置
