@@ -19,12 +19,12 @@
 
 1. **更新站点 URL**
 
-编辑 `astro.config.mjs`:
-```javascript
-export default defineConfig({
-  site: 'https://your-domain.com',  // 更新为你的域名
+编辑 `src/config.ts`:
+```typescript
+export const siteConfig: SiteConfig = {
+  siteURL: "https://your-domain.com/",  // 更新为你的域名，以斜杠结尾
   // ...
-});
+};
 ```
 
 2. **配置环境变量** (可选)
@@ -124,9 +124,10 @@ export default defineConfig({
 
 | 工作流 | 触发条件 | 功能 |
 |--------|---------|------|
-| `build.yml` | Push/PR 到 main | CI 测试，检查构建 |
+| `CI.yml` | Push/PR | 构建验证和测试 |
+| `build.yml` | Push/PR 到 main | CI 检查，多 Node.js 版本构建 + Astro Check |
 | `deploy.yml` | Push 到 main | 构建并部署到 pages 分支 |
-| `format.yml` | Push/PR | 代码格式和质量检查 |
+| `lint.yml` | Push/PR | ESLint + Type 类型检查 |
 
 ---
 
@@ -182,12 +183,12 @@ USE_SUBMODULE=true
 
 ### 配置文件
 
-项目包含两个 Vercel 配置文件:
+项目根目录已包含 `vercel.json`，Vercel 会自动识别:
 
-- `vercel.json` - 默认配置，适用于本地模式
-- `vercel-with-content.json.example` - 内容分离示例 (可选)
+- `vercel.json` - 统一配置，通过环境变量控制行为
 
-**注意**: 使用默认 `vercel.json` 即可，通过环境变量控制是否启用内容分离。
+**本地模式**: 无需任何环境变量，Vercel 自动识别 Astro 框架并完成构建。
+**内容分离模式**: 在 Vercel 项目设置中添加环境变量即可，见上表。
 
 ---
 
