@@ -1353,5 +1353,73 @@ async function updateCssFontReferences() {
 	}
 }
 
+// 注入字体预加载链接到 dist 中的 HTML 文件
+async function injectFontPreload() {
+	try {
+		const distDir = path.join(__dirname, "../dist/");
+		if (!fs.existsSync(distDir)) return;
+
+		const distFontDir = path.join(distDir, "assets/font");
+		if (!fs.existsSync(distFontDir)) return;
+
+		// 收集所有 woff2 字体文件
+		const woff2Files = fs
+			.readdirSync(distFontDir)
+			.filter((f) => f.endsWith(".woff2"));
+
+		if (woff2Files.length === 0) return;
+
+		// 构建 preload 标签
+		const preloadTags = woff2Files
+			.map(
+				(f) =>
+					`<link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/font/${f}" />`,
+			)
+			.join("\n\t");
+
+		// 查找所有 HTML 文件
+		const htmlFiles = [];
+		function findHtmlFiles(dir) {
+			if (!fs.existsSync(dir)) return;
+			const files = fs.readdirSync(dir);
+			files.forEach((file) => {
+				const filePath = path.join(dir, file);
+				const stat = fs.statSync(filePath);
+				if (stat.isDirectory()) {
+					findHtmlFiles(filePath);
+				} else if (file.endsWith(".html")) {
+					htmlFiles.push(filePath);
+				}
+			});
+		}
+		findHtmlFiles(distDir);
+
+		let injectedCount = 0;
+		for (const htmlFile of htmlFiles) {
+			let html = fs.readFileSync(htmlFile, "utf-8");
+
+			// 检查是否已有字体预加载
+			if (html.includes('as="font"')) continue;
+
+			// 在 </head> 前注入 preload 标签
+			if (html.includes("</head>")) {
+				html = html.replace("</head>", `\t${preloadTags}\n</head>`);
+				fs.writeFileSync(htmlFile, html);
+				injectedCount++;
+			}
+		}
+
+		if (injectedCount > 0) {
+			console.log(
+				`✓ Injected font preload into ${injectedCount} HTML files (${woff2Files.length} fonts)`,
+			);
+		}
+	} catch (error) {
+		console.error("⚠ Font preload injection failed:", error.message);
+	}
+}
+
 // 运行压缩
-compressFonts().then(() => updateCssFontReferences());
+compressFonts()
+	.then(() => updateCssFontReferences())
+	.then(() => injectFontPreload());
