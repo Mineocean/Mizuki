@@ -26,7 +26,7 @@ async function getAnimeModeFromConfig() {
 
 function runScript(scriptPath) {
 	return new Promise((resolve, reject) => {
-		const script = spawn("node", [scriptPath], {
+		const script = spawn("node", [`"${scriptPath}"`], {
 			stdio: "inherit",
 			shell: true,
 		});

@@ -26,20 +26,12 @@
   --breakpoint-xl: 1920px;
 }
 
-/* 导入 ZenMaruGothic-Medium 字体 */
+/* 导入 LXGWWenKaiLite 字体 */
 @font-face {
-  font-family: "ZenMaruGothic-Medium";
-  src: url("/assets/font/ZenMaruGothic-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-display: swap;
-}
-
-/* 导入 萝莉体 第二版 字体 */
-@font-face {
-  font-family: "萝莉体 第二版";
-  src: url("/assets/font/loli.ttf") format("truetype");
-  font-style: normal;
+  font-family: "LXGWWenKaiLite";
+  src: url("/assets/font/LXGWWenKaiLite-Regular.ttf") format("truetype");
   font-weight: 400;
+  font-style: normal;
   font-display: swap;
 }
 

@@ -46,7 +46,7 @@ export const siteConfig: SiteConfig = {
 		projects: false, // 项目页面开关
 		skills: false, // 技能页面开关
 		timeline: false, // 时间线页面开关
-		albums: false, // 相册页面开关
+		albums: true, // 相册页面开关
 		devices: false, // 设备页面开关
 	},
 
@@ -217,16 +217,16 @@ export const siteConfig: SiteConfig = {
 		asciiFont: {
 			// 英文字体 - 优先级最高
 			// 指定为英文字体则无论字体包含多大范围，都只会保留 ASCII 字符子集
-			fontFamily: "ZenMaruGothic-Medium",
+			fontFamily: "LXGWWenKaiLite",
 			fontWeight: "400",
-			localFonts: ["ZenMaruGothic-Medium.ttf"],
+			localFonts: ["LXGWWenKaiLite-Regular.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 		cjkFont: {
 			// 中日韩字体 - 作为回退字体
-			fontFamily: "萝莉体 第二版",
-			fontWeight: "500",
-			localFonts: ["loli.ttf"],
+			fontFamily: "LXGWWenKaiLite",
+			fontWeight: "400",
+			localFonts: ["LXGWWenKaiLite-Regular.ttf"],
 			enableCompress: true, // 启用字体子集优化，减少字体文件大小
 		},
 	},
@@ -300,6 +300,11 @@ export const navBarConfig: NavBarConfig = {
 					name: "Anime",
 					url: "/anime/",
 					icon: "material-symbols:movie",
+				},
+				{
+					name: "Albums",
+					url: "/albums/",
+					icon: "material-symbols:photo-library",
 				},
 			],
 		},
