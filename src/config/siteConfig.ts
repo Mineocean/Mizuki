@@ -5,7 +5,7 @@ const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
 
 export const siteConfig: SiteConfig = {
 	title: "Yozakura Misaka",
-	subtitle: "宅日記",
+	subtitle: "宅日记",
 	siteURL: "https://blog.misakaoi.top/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2025-11-25", // 站点开始运行日期，用于站点统计组件计算运行天数
 
