@@ -8,6 +8,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "宅日记",
 	siteURL: "https://blog.misakaoi.top/", // 请替换为你的站点URL，以斜杠结尾
 	siteStartDate: "2025-11-25", // 站点开始运行日期，用于站点统计组件计算运行天数
+	timeZone: "Asia/Shanghai", // 文章日期使用的 IANA 时区，可改为 Asia/Tokyo、Europe/Berlin 等
 
 	lang: SITE_LANG,
 
@@ -45,6 +46,11 @@ export const siteConfig: SiteConfig = {
 	pageScaling: {
 		enable: true, // 是否开启自动缩放
 		targetWidth: 1000, // 目标宽度，低于此宽度时开始缩放
+	},
+
+	font: {
+		// custom 保持 LXGWWenKaiLite -> 系统字体的显示顺序；system 不加载任何自定义字体
+		mode: "custom",
 	},
 
 	bangumi: {
@@ -85,6 +91,14 @@ export const siteConfig: SiteConfig = {
 		categoryBar: {
 			enable: true, // 是否在文章列表页显示分类导航条
 		},
+	},
+
+	// 文章页超宽屏布局配置
+	// 在 2K/4K 视口下扩展文章容器、侧栏与正文阅读轨道；1920px 以下不生效。
+	// 与 pageScaling 互不影响：断点按 CSS 视口判断，且 pageScaling 在 2000px 以上是空操作。
+	ultrawidePostLayout: {
+		enable: true, // 访客未手动切换时的初始状态
+		allowSwitch: true, // 是否在设置面板中显示开关
 	},
 
 	// 标签样式配置
@@ -197,7 +211,6 @@ export const siteConfig: SiteConfig = {
 		// }
 	],
 
-	// 字体现在通过 astro.config.mjs 的 fonts 选项配置（Astro Font API）
 	showLastModified: true, // 控制"上次编辑"卡片显示的开关
 	pageProgressBar: {
 		enable: true, // 启用页面顶部进度条
