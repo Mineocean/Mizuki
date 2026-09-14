@@ -15,6 +15,10 @@
 - **[CONTENT_AUTHORING.zh.md](./CONTENT_AUTHORING.zh.md)** - 简体中文内容编写指南
 - **[CONTENT_AUTHORING.ja.md](./CONTENT_AUTHORING.ja.md)** - 日本語コンテンツ執筆ガイド
 - **[CONTENT_AUTHORING.tw.md](./CONTENT_AUTHORING.tw.md)** - 繁體中文內容編寫指南
+- **[MARKDOWN_SYNTAX.md](./MARKDOWN_SYNTAX.md)** - Markdown 常用语法速查
+  - 标准语法与本站扩展语法
+  - 代码块元信息、提示块、图片网格
+  - 常见坑与排查
 
 所有版本均包括：
 
@@ -90,12 +94,16 @@
 ### 内容仓库更新后站点没有自动重新部署 🆕
 → 阅读 [自动构建触发快速参考](./AUTO_BUILD_TRIGGER.md)
 
+### 我忘了 Markdown 语法怎么写
+→ 阅读 [Markdown 常用语法速查](./MARKDOWN_SYNTAX.md)
+
 ## 📖 文档架构
 
 ```
 docs/
 ├── README.md                    # 本文档 - 索引导航
 ├── CONTENT_AUTHORING*.md        # 多语言 Frontmatter 与 Markdown/MDX 写作指南
+├── MARKDOWN_SYNTAX.md           # Markdown 常用语法速查
 ├── CONTENT_RENDERING.md         # Markdown/MDX 与 Feed 渲染
 ├── CONTENT_SEPARATION.md        # 内容分离核心指南
 ├── CONTENT_REPOSITORY.md        # 内容仓库结构
