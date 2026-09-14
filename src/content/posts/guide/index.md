@@ -5,7 +5,7 @@ description: "A generic example of article structure and frontmatter."
 image: "./cover.png"
 tags: ["Example", "Writing", "Markdown"]
 category: Guides
-draft: false
+draft: true
 ---
 
 

@@ -10,6 +10,7 @@ hideHomeContent: true
 alias: "encrypted-example"
 tags: ["Example", "Encryption"]
 category: "Examples"
+draft: true
 ---
 
 This article demonstrates browser-side password protection. The password is intentionally present in the repository so readers can open the example; never reuse it for private content.
